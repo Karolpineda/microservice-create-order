@@ -15,10 +15,10 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t christopherpallo2000/microservice-create-product:latest .
+        run: docker build -t karolpineda/microservice-create-order:latest .
 
       - name: Push Docker Image
-        run: docker push christopherpallo2000/microservice-create-product:latest
+        run: docker push karolpineda/microservice-create-order:latest
 
   deploy-to-ec2:
     needs: build-and-push-image
@@ -32,23 +32,43 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
             # 1) Bajar la imagen de Docker Hub
-            docker pull christopherpallo2000/microservice-create-product:latest
+            docker pull karolpineda/microservice-create-order:latest
 
             # 2) Detener y eliminar contenedor previo
-            docker stop product_container || true
-            docker rm product_container || true
+            docker stop order_container || true
+            docker rm order_container || true
 
-            # 3) Generar .env con secretos
+            # 3) Generar archivo .env con secretos
             echo "DB_HOST=${{ secrets.DB_HOST }}" > .env
+            echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+            echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
             echo "DB_USER=${{ secrets.DB_USER }}" >> .env
             echo "DB_PASS=${{ secrets.DB_PASS }}" >> .env
-            echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
-            echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
             echo "PORT=${{ secrets.PORT }}" >> .env
-            # Agrega más variables si requieres
 
-            # 4) Correr contenedor usando ese .env
-            docker run -d --name product_container \
+            echo "PORT=${{ secrets.ORDERS_DB_HOST }}" >> .env
+            echo "PORT=${{ secrets.ORDERS_DB_PORT }}" >> .env
+            echo "PORT=${{ secrets.ORDERS_DB_NAME }}" >> .env
+            echo "PORT=${{ secrets.ORDERS_DB_USER }}" >> .env
+            echo "PORT=${{ secrets.ORDERS_DB_PASS }}" >> .env
+            
+            echo "PORT=${{ secrets.PRODUCTS_DB_HOST }}" >> .env
+            echo "PORT=${{ secrets.PRODUCTS_DB_PORT }}" >> .env
+            echo "PORT=${{ secrets.PRODUCTS_DB_NAME }}" >> .env
+            echo "PORT=${{ secrets.PRODUCTS_DB_USER }}" >> .env
+            echo "PORT=${{ secrets.PRODUCTS_DB_PASS }}" >> .env
+
+            
+            echo "PORT=${{ secrets.WORKSHOP_DB_HOST }}" >> .env
+            echo "PORT=${{ secrets.WORKSHOP_DB_PORT }}" >> .env
+            echo "PORT=${{ secrets.WORKSHOP_DB_NAME }}" >> .env
+            echo "PORT=${{ secrets.WORKSHOP_DB_USER }}" >> .env
+            echo "PORT=${{ secrets.WORKSHOP_DB_PASS }}" >> .env
+            
+
+            
+            # 4) Correr contenedor usando el archivo .env
+            docker run -d --name order_container \
               --env-file .env \
-              -p 8081:8081 \
-              christopherpallo2000/microservice-create-product:latest
+              -p 8098:8098 \
+              karolpineda/microservice-create-order:latest
