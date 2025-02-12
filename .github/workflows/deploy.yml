@@ -46,24 +46,24 @@ jobs:
             echo "DB_PASS=${{ secrets.DB_PASS }}" >> .env
             echo "PORT=${{ secrets.PORT }}" >> .env
 
-            echo "PORT=${{ secrets.ORDERS_DB_HOST }}" >> .env
-            echo "PORT=${{ secrets.ORDERS_DB_PORT }}" >> .env
-            echo "PORT=${{ secrets.ORDERS_DB_NAME }}" >> .env
-            echo "PORT=${{ secrets.ORDERS_DB_USER }}" >> .env
-            echo "PORT=${{ secrets.ORDERS_DB_PASS }}" >> .env
+            echo "ORDERS_DB_HOST=${{ secrets.ORDERS_DB_HOST }}" >> .env
+            echo "ORDERS_DB_PORT=${{ secrets.ORDERS_DB_PORT }}" >> .env
+            echo "ORDERS_DB_NAME=${{ secrets.ORDERS_DB_NAME }}" >> .env
+            echo "ORDERS_DB_USER=${{ secrets.ORDERS_DB_USER }}" >> .env
+            echo "ORDERS_DB_PASS=${{ secrets.ORDERS_DB_PASS }}" >> .env
             
-            echo "PORT=${{ secrets.PRODUCTS_DB_HOST }}" >> .env
-            echo "PORT=${{ secrets.PRODUCTS_DB_PORT }}" >> .env
-            echo "PORT=${{ secrets.PRODUCTS_DB_NAME }}" >> .env
-            echo "PORT=${{ secrets.PRODUCTS_DB_USER }}" >> .env
-            echo "PORT=${{ secrets.PRODUCTS_DB_PASS }}" >> .env
+            echo "PRODUCTS_DB_HOST=${{ secrets.PRODUCTS_DB_HOST }}" >> .env
+            echo "PRODUCTS_DB_PORT=${{ secrets.PRODUCTS_DB_PORT }}" >> .env
+            echo "PRODUCTS_DB_NAME=${{ secrets.PRODUCTS_DB_NAME }}" >> .env
+            echo "PRODUCTS_DB_USER=${{ secrets.PRODUCTS_DB_USER }}" >> .env
+            echo "RODUCTS_DB_PASS=${{ secrets.PRODUCTS_DB_PASS }}" >> .env
 
-            
-            echo "PORT=${{ secrets.WORKSHOP_DB_HOST }}" >> .env
-            echo "PORT=${{ secrets.WORKSHOP_DB_PORT }}" >> .env
-            echo "PORT=${{ secrets.WORKSHOP_DB_NAME }}" >> .env
-            echo "PORT=${{ secrets.WORKSHOP_DB_USER }}" >> .env
-            echo "PORT=${{ secrets.WORKSHOP_DB_PASS }}" >> .env
+
+            echo "WORKSHOP_DB_HOST=${{ secrets.WORKSHOP_DB_HOST }}" >> .env
+            echo "WORKSHOP_DB_PORT=${{ secrets.WORKSHOP_DB_PORT }}" >> .env
+            echo "WORKSHOP_DB_NAME${{ secrets.WORKSHOP_DB_NAME }}" >> .env
+            echo "WORKSHOP_DB_USER=${{ secrets.WORKSHOP_DB_USER }}" >> .env
+            echo "WORKSHOP_DB_PASS=${{ secrets.WORKSHOP_DB_PASS }}" >> .env
             
 
             
