@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const orderRoutes = require("./routes/orderRoutes");
+const cors = require("cors");
 
 app.use(cors({
     origin: "*", // O especifica "http://localhost:3000"
