@@ -56,12 +56,12 @@ jobs:
             echo "PRODUCTS_DB_PORT=${{ secrets.PRODUCTS_DB_PORT }}" >> .env
             echo "PRODUCTS_DB_NAME=${{ secrets.PRODUCTS_DB_NAME }}" >> .env
             echo "PRODUCTS_DB_USER=${{ secrets.PRODUCTS_DB_USER }}" >> .env
-            echo "RODUCTS_DB_PASS=${{ secrets.PRODUCTS_DB_PASS }}" >> .env
+            echo "PRODUCTS_DB_PASS=${{ secrets.PRODUCTS_DB_PASS }}" >> .env
 
 
             echo "WORKSHOP_DB_HOST=${{ secrets.WORKSHOP_DB_HOST }}" >> .env
             echo "WORKSHOP_DB_PORT=${{ secrets.WORKSHOP_DB_PORT }}" >> .env
-            echo "WORKSHOP_DB_NAME${{ secrets.WORKSHOP_DB_NAME }}" >> .env
+            echo "WORKSHOP_DB_NAME=${{ secrets.WORKSHOP_DB_NAME }}" >> .env
             echo "WORKSHOP_DB_USER=${{ secrets.WORKSHOP_DB_USER }}" >> .env
             echo "WORKSHOP_DB_PASS=${{ secrets.WORKSHOP_DB_PASS }}" >> .env
             
